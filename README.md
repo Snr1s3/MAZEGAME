@@ -5,7 +5,7 @@ Per jugar, executa el fitxer `MazeGame.sh` de la següent manera:
   - `sudo chmod +x MazeGame.sh`  per donar permís d'execució
   - `./MazeGame.sh` 
 
-Per a passar el joc de proves, executa el fitxer `joDeProves.sh` de la següent manera:    
+Per a passar el joc de proves, executa el fitxer `jocDeProves.sh` de la següent manera:    
   - `sudo chmod +x jocDeProves.sh`  per donar permís d'execució
   - `./jocDeProves.sh`  
 
@@ -13,4 +13,4 @@ Per a passar el joc de proves, executa el fitxer `joDeProves.sh` de la següent 
 
 ## Autora
 Laberint fet per:
-  - Alba Segura - 2023_alba.segura@iticbcn.cat
+  - Alba Segura - alba.segurall04@gmail.com
