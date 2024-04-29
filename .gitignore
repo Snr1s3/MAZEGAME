@@ -1,3 +1,2 @@
 # ignores all .class files
 *.class
-echo ".class" >> .gitignore
