@@ -1,3 +1,5 @@
+import java.io.IOException;
+import java.io.File;
 public class UI {
     // ANSI escape code to reset text color
     public static final String ANSI_RESET = "\u001B[0m";
@@ -81,5 +83,15 @@ public class UI {
         else{
             System.out.println(ANSI_RED+"No has superat el rècord. Potser la següent vegada."+ANSI_RESET);
         }
+    }
+    public static void printAllHeader(Maze laberint ,Record record, boolean hasRecord)throws IOException{
+        header(); // Printing the header
+        if(hasRecord){
+            record.storeRecord(laberint.getMazeName());
+            printMazeInfo(laberint.getMazeName(), 1,hasRecord, record.getRecord()); // Showing maze info
+        }
+        else{
+            printMazeInfo(laberint.getMazeName(), 1,hasRecord, record.getRecord()); // Showing maze info
+        } 
     }
 }

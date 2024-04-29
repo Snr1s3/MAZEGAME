@@ -111,4 +111,40 @@ public class MazeUtilities {
             System.out.println();
         }
     }
+
+    public static boolean argsNumCheck(String[] args){
+        if(args.length != 1){
+            if( args.length==0){
+                Errors.printErrors(6);
+            }
+            else{
+                Errors.printErrors(7);
+            }
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean argExtensionCheck(String filename){
+        if(filename.endsWith(".dat") || !filename.contains(".")) {
+            return true;
+        }
+        Errors.printErrors(5);
+        return false;
+    }
+    public static boolean MazeCheck(File file, boolean emptyMaze, String filename)throws IOException{
+        if(file.exists()) { // Checking if the file exists
+            emptyMaze =!MazeUtilities.checkMaze(filename);
+            if(!emptyMaze){
+                Errors.printErrors(1);
+                return false;
+            }
+            return true;
+        }
+        else {
+            Errors.printErrors(4);
+            return false;
+        }
+        
+    }
 }

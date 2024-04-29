@@ -108,5 +108,18 @@ public class Input {
         }
         return false;
     }
+
+    public static boolean invalidMoves(String input){
+        if(input.isBlank() || digitsCheck(input.toUpperCase())|| inavlidChar(input.toUpperCase())){
+            if(digitsCheck(input.toUpperCase()) ||inavlidChar(input.toUpperCase()) ){
+                Errors.printErrors(2);
+            }
+            else{
+                Errors.printErrors(8);
+            }
+            return true;
+        }
+        return false;
+    }
     
 }
