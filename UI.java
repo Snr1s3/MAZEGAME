@@ -8,10 +8,10 @@ public class UI {
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_CYAN = "\u001B[36m";
+    private static final String ANSI_RED = "\u001B[31m";
     //Bold
     public static final String ANSI_BOLD = "\u001B[1m";
-    // ANSI escape code for red text
-    private static final String ANSI_RED = "\u001B[31m";
+    
 
     // Method to print the help menu
     public static void showHelp(){

@@ -3,11 +3,9 @@
 #Functions
 encript(){
     python3 mazes/encrypt.py
-    python3 tests/encrypt.py 
 }
 decript(){
-    python3 mazes/decrypt.py 
-    python3 tests/decrypt.py 
+    python3 mazes/decrypt.py
 }
 #Main
 decript
