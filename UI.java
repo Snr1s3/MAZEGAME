@@ -8,9 +8,10 @@ public class UI {
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_CYAN = "\u001B[36m";
-    public static final String ANSI_RED = "\u001B[31m";
     //Bold
     public static final String ANSI_BOLD = "\u001B[1m";
+    // ANSI escape code for red text
+    private static final String ANSI_RED = "\u001B[31m";
 
     // Method to print the help menu
     public static void showHelp(){
@@ -63,7 +64,7 @@ public class UI {
         // Print the current number of attempts
         System.out.println("Intents actuals: "+  attempts);
             // Print the current state of the maze
-        MazeUtilities.printMaze(map);
+        Maze.printMaze(map);
         System.out.println();
     }
 
@@ -93,5 +94,34 @@ public class UI {
         else{
             printMazeInfo(laberint.getMazeName(), 1,hasRecord, record.getRecord()); // Showing maze info
         } 
+    }
+
+    public static void printErrors(int numError){
+        switch(numError){
+            case 1 :
+                System.out.println(ANSI_BOLD + ANSI_RED + "No hi ha cap laberint" + ANSI_RESET);
+                break;
+            case 2 :
+                System.out.println(ANSI_BOLD + ANSI_RED + "Moviment invàlid" + ANSI_RESET);
+                break;
+            case 3 :
+                System.out.println(ANSI_BOLD + ANSI_RED + "No es pot arribar al final del laberint" + ANSI_RESET);
+                break;
+            case 4 :
+                System.out.println(ANSI_BOLD + ANSI_RED + "Laberint no existent" + ANSI_RESET);
+                break;
+            case 5 :
+                System.out.println(ANSI_BOLD + ANSI_RED + "Extensió del fitxer invàlida" + ANSI_RESET);
+                break;
+            case 6 :
+                System.out.println(ANSI_BOLD + ANSI_RED + "Cap argument especificat" + ANSI_RESET);
+                break;
+            case 7 :
+                System.out.println(ANSI_BOLD + ANSI_RED + "Masses arguments especificats" + ANSI_RESET);
+                break;
+            case 8 :
+                System.out.println(ANSI_BOLD + ANSI_RED + "Cap moviment fet" + ANSI_RESET);
+                break;
+        }
     }
 }

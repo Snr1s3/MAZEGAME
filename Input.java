@@ -112,10 +112,10 @@ public class Input {
     public static boolean invalidMoves(String input){
         if(input.isBlank() || digitsCheck(input.toUpperCase())|| inavlidChar(input.toUpperCase())){
             if(digitsCheck(input.toUpperCase()) ||inavlidChar(input.toUpperCase()) ){
-                Errors.printErrors(2);
+                UI.printErrors(2);
             }
             else{
-                Errors.printErrors(8);
+                UI.printErrors(8);
             }
             return true;
         }

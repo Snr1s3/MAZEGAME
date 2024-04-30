@@ -5,30 +5,30 @@ public class MazeGame {
         int moveExitCode=0; // Variable to store the exit code of the move
         boolean hasRecord= false;
         boolean emptyMaze= false;
-        if(!MazeUtilities.argsNumCheck(args)){
+        if(!Maze.argsNumCheck(args)){
             return;
         }
         String filename = "mazes/"+args[0];
-        if(!MazeUtilities.argExtensionCheck(filename)){
+        if(!Maze.argExtensionCheck(filename)){
             return;
         }
         if(!filename.endsWith(".dat")) {
             filename+=".dat";
         }
         File file = new File(filename); // Creating a File object with the first command line argument
-        if(!MazeUtilities.MazeCheck(file, emptyMaze, filename)){
+        if(!Maze.MazeCheck(file, emptyMaze, filename)){
             return;
         }
 
         Maze laberint = new Maze(filename); // Creating a Maze object with the file
         Maze mazeCanReachEnd = new Maze(filename);
         mazeCanReachEnd.setMaze();
-        BackTracking backTracking = new BackTracking();
-        int[] start = backTracking.startPosition(mazeCanReachEnd.getMazeMap());
-        boolean canReach = backTracking.canFinish(mazeCanReachEnd.getMazeMap(), start[0], start[1]);                        
+        
+        int[] start = mazeCanReachEnd.startPosition(mazeCanReachEnd.getMazeMap());
+        boolean canReach = mazeCanReachEnd.canFinish(mazeCanReachEnd.getMazeMap(), start[0], start[1]);                        
         mazeCanReachEnd = null;
         if(!canReach){
-            Errors.printErrors(3);
+            UI.printErrors(3);
             return;
         }
         Player player = Player.getPlayer(start); // Creating a new Player object
@@ -37,7 +37,6 @@ public class MazeGame {
            hasRecord=true;
         }
         UI.printAllHeader(laberint, record, hasRecord);
-        
         laberint.setMaze(); // Setting up the maze
         player.setInitialPosi(laberint.getMazeMap());// Setting the initial position of the player
         laberint.getMaze(); // Getting the maze
@@ -55,7 +54,6 @@ public class MazeGame {
                         UI.printQ();
                         break; 
                     }
-                    
                 }        
                 // Otherwise, loop through each character in the user's input
                 for(int i =0; i<input.length();i++){
@@ -90,7 +88,6 @@ public class MazeGame {
                 record.newRecord(hasRecord, player.getIntents(), laberint.getMazeName());
                 break;
             }
-        }
-            
+        }    
     }
 }
