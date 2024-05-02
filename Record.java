@@ -13,6 +13,9 @@ public class Record {
         while ((line = reader.readLine()) != null) {
             String[] parameters=line.split(",");
             if(parameters[0].equals(mazeName)){
+                recordInfo[0] = parameters[0];
+                recordInfo[1] = parameters[1];
+                recordInfo[2] = parameters[2];
                 fR.close();
                 reader.close();
                 return true;
@@ -21,22 +24,6 @@ public class Record {
         fR.close();
         reader.close();
         return false;
-    }
-
-    public  void storeRecord(String mazeName) throws IOException{
-        FileReader fR = new FileReader("mazes/mazeDB.csv");
-        BufferedReader reader = new BufferedReader(fR);
-        String line = reader.readLine();
-        while ((line = reader.readLine()) != null) {
-            String[] parameters=line.split(",");
-            if(parameters[0].equals(mazeName)){
-                recordInfo[0] = parameters[0];
-                recordInfo[1] = parameters[1];
-                recordInfo[2] = parameters[2];
-            }
-        }
-        fR.close();
-        reader.close();
     }
 
     public  void newRecord(boolean record, int attempts, String mazeName)throws IOException{
