@@ -44,42 +44,42 @@ public class MazeGame {
         while(true){
             UI.userPrompt(laberint.getMazeName());
             String input=Entrada.readLine();
-            if(!Input.invalidMoves(input)){
-                input=input.toUpperCase();
-                input =Input.playerInput(input); // Reading user input
-                if(Input.containsQ(input) || Input.containsH(input) ){
-                    if(Input.containsH(input)){
-                        UI.showHelp();
-                    }else{
-                        UI.printQ();
+            if(!input.isBlank()){
+                if(!Input.invalidMoves(input)){
+                    input=input.toUpperCase();
+                    input =Input.playerInput(input); // Reading user input
+                    int HorQ =Input.containsQorH(input);
+                    if(HorQ == 1){
                         break; 
-                    }
-                }        
-                // Otherwise, loop through each character in the user's input
-                for(int i =0; i<input.length();i++){
-                    // Turn the player left based on the current character
-                    player.turnLeft(input.charAt(i),laberint.getMazeMap());
+                    }           
+                    // Otherwise, loop through each character in the user's input
+                    if(HorQ == 0){
+                        for(int i =0; i<input.length();i++){
+                            // Turn the player left based on the current character
+                            player.turnLeft(input.charAt(i),laberint.getMazeMap());
 
-                    // Turn the player right based on the current character
-                    player.turnRight(input.charAt(i),laberint.getMazeMap());
-                    // Move the player forward based on the current character
-                    // and store the exit code of the move
-                    moveExitCode = player.moveForward(input.charAt(i),laberint.getMazeMap());
-                    /*Exit Code Meaning for moveExitCode
-                    1-Crash in to a wall
-                    2-Continue
-                    3-Exit Reached*/
-                    // If the exit code of the move is 1, break the loop
-                    if(moveExitCode== 1){
-                        player.increaseAttempts(); // Incrementing the attempts of the player
-                        break;
+                            // Turn the player right based on the current character
+                            player.turnRight(input.charAt(i),laberint.getMazeMap());
+                            // Move the player forward based on the current character
+                            // and store the exit code of the move
+                            moveExitCode = player.moveForward(input.charAt(i),laberint.getMazeMap());
+                            /*Exit Code Meaning for moveExitCode
+                            1-Crash in to a wall
+                            2-Continue
+                            3-Exit Reached*/
+                            // If the exit code of the move is 1, break the loop
+                            if(moveExitCode== 1){
+                                player.increaseAttempts(); // Incrementing the attempts of the player
+                                break;
+                            }
+                            // If the exit code of the move is 3, print "Aconseguit!" and break the loop
+                            else if( moveExitCode == 3){
+                                UI.printWin();
+                                break;
+                            }
+                        }
                     }
-                    // If the exit code of the move is 3, print "Aconseguit!" and break the loop
-                    else if( moveExitCode == 3){
-                        UI.printWin();
-                        break;
-                    }
-                }        
+                }  
             }
             UI.printMazeAndMove(player.getIntents(),laberint.getMazeMap());
             //System.out.println(input);// Un comment the line to see the player input

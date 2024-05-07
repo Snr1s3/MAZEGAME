@@ -45,13 +45,18 @@ public class Input {
     }
 
     // Method to check if the input contains 'Q'
-    public static boolean containsQ(String input){
-        boolean contains = false;
+    public static int containsQorH(String input){
+        int contains = 0;
         for(int i= 0; i< input.length(); i++){            
             char currentChar = input.charAt(i);
             switch (currentChar) {
                 case 'Q':
-                    contains = true;
+                    contains = 1;
+                    UI.printQ();
+                    break;
+                case 'H':
+                    contains = 2;
+                    UI.showHelp();
                     break;
                 default:
             }            
