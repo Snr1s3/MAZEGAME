@@ -211,7 +211,7 @@ public  class Player{
         }
         return 4;
     }
-    public  boolean isOtherDirection(){
+    public boolean isOtherDirection(){
         if(direction.equals("up") && startDirection.equals("down")){
             return true;
         }
@@ -227,7 +227,7 @@ public  class Player{
         return false;
     }
 
-    public  char deadChar(){
+    public char deadChar(){
         if(direction.equals("up")){
             return 'U';
         }

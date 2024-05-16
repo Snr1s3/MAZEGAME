@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.FileWriter;
 
 public class Record {
-    private  String[] recordInfo = new String[3];
+    private String[] recordInfo = new String[3];
 
     public boolean checkRecord(String mazeName) throws IOException{
         FileReader fR = new FileReader("mazes/mazeDB.csv");
@@ -26,7 +26,7 @@ public class Record {
         return false;
     }
 
-    public  void newRecord(boolean record, int attempts, String mazeName)throws IOException{
+    public void newRecord(boolean record, int attempts, String mazeName)throws IOException{
         UI.printAttemptsRecord(attempts);
         System.out.println();
         if(!record || attempts< Integer.parseInt(recordInfo[1])){
@@ -49,7 +49,7 @@ public class Record {
         }
     }
 
-    public  String[] getRecord(){
+    public String[] getRecord(){
         return recordInfo;
     }
 }

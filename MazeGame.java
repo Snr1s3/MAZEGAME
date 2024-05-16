@@ -25,12 +25,12 @@ public class MazeGame {
         mazeCanReachEnd.setMaze();
         
         int[] start = mazeCanReachEnd.startPosition(mazeCanReachEnd.getMazeMap());
-        boolean canReach = mazeCanReachEnd.canFinish(mazeCanReachEnd.getMazeMap(), start[0], start[1]);                        
-        mazeCanReachEnd = null;
-        if(!canReach){
+        if(!mazeCanReachEnd.canFinish(mazeCanReachEnd.getMazeMap(), start[0], start[1])){
             UI.printErrors(3);
             return;
-        }
+        }                     
+        mazeCanReachEnd = null;
+        
         Player player = Player.getPlayer(start); // Creating a new Player object
         Record record = new Record();
         if(record.checkRecord(laberint.getMazeName())){
@@ -48,12 +48,11 @@ public class MazeGame {
                 if(!Input.invalidMoves(input)){
                     input=input.toUpperCase();
                     input =Input.playerInput(input); // Reading user input
-                    int HorQ =Input.containsQorH(input);
-                    if(HorQ == 1){
+                    if(Input.containsQorH(input) == 1){
                         break; 
                     }           
                     // Otherwise, loop through each character in the user's input
-                    if(HorQ == 0){
+                    if(Input.containsQorH(input) == 0){
                         for(int i =0; i<input.length();i++){
                             // Turn the player left based on the current character
                             player.turnLeft(input.charAt(i),laberint.getMazeMap());
