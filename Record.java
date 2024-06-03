@@ -33,11 +33,11 @@ public class Record {
             FileWriter writer = new FileWriter("mazes/mazeDB.csv", true);
             writer.write(System.lineSeparator()); // Add a new line
             UI.printNewRecord(true);
-            String name=Entrada.readLine();
+            String name=LineReader.newLine();
             while(name.isBlank()){
                 System.out.println();
                 UI.printNewRecord(true);
-                name=Entrada.readLine();
+                name=LineReader.newLine();
             }
             name=name.trim();
             String newLine=mazeName+","+attempts+","+name;

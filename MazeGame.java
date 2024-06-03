@@ -43,7 +43,7 @@ public class MazeGame {
         System.out.println();                        
         while(true){
             UI.userPrompt(laberint.getMazeName());
-            String input=Entrada.readLine();
+            String input=LineReader.newLine();
             if(!input.isBlank()){
                 if(!Input.invalidMoves(input)){
                     input=input.toUpperCase();

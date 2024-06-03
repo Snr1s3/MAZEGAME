@@ -16,34 +16,36 @@ public class UI {
     // Method to print the help menu
     public static void showHelp(){
         System.out.println();
-        System.out.println(ANSI_CYAN + "Les opcions disponibles són:" + ANSI_RESET);
-        System.out.println(ANSI_CYAN + "H: Mostra aquest text d'ajuda" + ANSI_RESET);
-        System.out.println(ANSI_CYAN + "L: gira a l'esquerra" + ANSI_RESET);
-        System.out.println(ANSI_CYAN + "R: gira a la dreta" + ANSI_RESET);
-        System.out.println(ANSI_CYAN + "F: mou una passa endavant" + ANSI_RESET);
-        System.out.println(ANSI_CYAN + "nF: mou n passes endavant" + ANSI_RESET);
-        System.out.println(ANSI_CYAN + "Q: Sortir" + ANSI_RESET);
+        System.out.println(ANSI_CYAN + "Available options are:" + ANSI_RESET);
+        System.out.println(ANSI_CYAN + "H: Show this help text" + ANSI_RESET);
+        System.out.println(ANSI_CYAN + "L: Turn left" + ANSI_RESET);
+        System.out.println(ANSI_CYAN + "R: Turn right" + ANSI_RESET);
+        System.out.println(ANSI_CYAN + "F: Move one step forward" + ANSI_RESET);
+        System.out.println(ANSI_CYAN + "nL: Turn n times left" + ANSI_RESET);
+        System.out.println(ANSI_CYAN + "nR: Turn n tiems right" + ANSI_RESET);
+        System.out.println(ANSI_CYAN + "nF: Move n steps forward" + ANSI_RESET);
+        System.out.println(ANSI_CYAN + "Q: Quit" + ANSI_RESET);
     }
 
     // Method to print the game header
     public static void header(){
-        System.out.println(ANSI_BOLD + ANSI_BLUE+"Joc del laberint"+ANSI_RESET);
-        System.out.println(ANSI_BOLD + ANSI_BLUE+"================"+ANSI_RESET);
-        System.out.println(ANSI_CYAN + "H: mostra ajuda"+ ANSI_RESET);
+        System.out.println(ANSI_BOLD + ANSI_BLUE+"THE MAZE GAME"+ANSI_RESET);
+        System.out.println(ANSI_BOLD + ANSI_BLUE+"============="+ANSI_RESET);
+        System.out.println(ANSI_CYAN + "H: Show this help text"+ ANSI_RESET);
     }
 
     // Method to show maze info
     public static void printMazeInfo(String mazeName, int attempts, boolean record, String[] recordString){ //Check if the file exists and show the  maze stats(name, tries, solved or not))
         System.out.println();
-        System.out.println(ANSI_CYAN+"Laberint: "+ mazeName+ANSI_RESET);
+        System.out.println(ANSI_CYAN+"Maze: "+ mazeName+ANSI_RESET);
         if(record){
-            System.out.println(ANSI_CYAN+"Rècord actual: "+ recordString[2] +" en "+recordString[1]+" intents"+ANSI_RESET);
+            System.out.println(ANSI_CYAN+"Actual record: "+ recordString[2] +" in "+recordString[1]+" intents"+ANSI_RESET);
         }
         else{
-            System.out.println(ANSI_CYAN+"Encara no resolt"+ANSI_RESET);
+            System.out.println(ANSI_CYAN+"Record not  found"+ANSI_RESET);
         }
         System.out.println();
-        System.out.println(ANSI_CYAN+"Intents actuals: "+1+ANSI_RESET);
+        System.out.println(ANSI_CYAN+"Actual attempt 1"+ANSI_RESET);
     }
 
     public static void userPrompt(String mazeName){
@@ -53,16 +55,16 @@ public class UI {
     }
 
     public static void printQ(){
-        System.out.println(ANSI_YELLOW+"TENS POR?"+ANSI_RESET); 
+        System.out.println(ANSI_YELLOW+"ARE YOU SCARED?"+ANSI_RESET); 
     }
 
     public static void printWin(){
-        System.out.println(ANSI_GREEN+"Aconseguit!"+ANSI_RESET);
+        System.out.println(ANSI_GREEN+"You win!!"+ANSI_RESET);
     }
     public static void printMazeAndMove(int attempts, char[][] map){
         System.out.println(); 
         // Print the current number of attempts
-        System.out.println("Intents actuals: "+  attempts);
+        System.out.println("Actual attempts: "+  attempts);
             // Print the current state of the maze
         Maze.printMaze(map);
         System.out.println();
@@ -70,19 +72,19 @@ public class UI {
 
     public static void printAttemptsRecord(int attempts){
         if(attempts == 1){
-            System.out.println(ANSI_CYAN+"Has resolt el laberint en "+  attempts+" intent"+ANSI_RESET);
+            System.out.println(ANSI_CYAN+"Maze finished in "+  attempts+" attempt"+ANSI_RESET);
         }
         else{
-            System.out.println(ANSI_CYAN+"Has resolt el laberint en "+  attempts+" intents"+ANSI_RESET);
+            System.out.println(ANSI_CYAN+"Maze finished in "+  attempts+" attempts"+ANSI_RESET);
         }
     }
 
     public static void printNewRecord(boolean record){
         if(record){
-            System.out.print(ANSI_GREEN+"Nou rècord! Indica el teu nom:"+ANSI_RESET);
+            System.out.print(ANSI_GREEN+"New record! Enter your name: "+ANSI_RESET);
         }
         else{
-            System.out.println(ANSI_RED+"No has superat el rècord. Potser la següent vegada."+ANSI_RESET);
+            System.out.println(ANSI_RED+"You haven't broken the record. Maybe next time."+ANSI_RESET);
         }
     }
     public static void printAllHeader(Maze laberint ,Record record, boolean hasRecord)throws IOException{
@@ -98,28 +100,28 @@ public class UI {
     public static void printErrors(int numError){
         switch(numError){
             case 1 :
-                System.out.println(ANSI_BOLD + ANSI_RED + "No hi ha cap laberint" + ANSI_RESET);
+                System.out.println(ANSI_BOLD + ANSI_RED + "No maze found" + ANSI_RESET);
                 break;
             case 2 :
-                System.out.println(ANSI_BOLD + ANSI_RED + "Moviment invàlid" + ANSI_RESET);
+                System.out.println(ANSI_BOLD + ANSI_RED + "Invalid move" + ANSI_RESET);
                 break;
             case 3 :
-                System.out.println(ANSI_BOLD + ANSI_RED + "No es pot arribar al final del laberint" + ANSI_RESET);
+                System.out.println(ANSI_BOLD + ANSI_RED + "Can't finish the maze" + ANSI_RESET);
                 break;
             case 4 :
-                System.out.println(ANSI_BOLD + ANSI_RED + "Laberint no existent" + ANSI_RESET);
+                System.out.println(ANSI_BOLD + ANSI_RED + "Maze not found" + ANSI_RESET);
                 break;
             case 5 :
-                System.out.println(ANSI_BOLD + ANSI_RED + "Extensió del fitxer invàlida" + ANSI_RESET);
+                System.out.println(ANSI_BOLD + ANSI_RED + "Invalid file" + ANSI_RESET);
                 break;
             case 6 :
-                System.out.println(ANSI_BOLD + ANSI_RED + "Cap argument especificat" + ANSI_RESET);
+                System.out.println(ANSI_BOLD + ANSI_RED + "No argument found" + ANSI_RESET);
                 break;
             case 7 :
-                System.out.println(ANSI_BOLD + ANSI_RED + "Masses arguments especificats" + ANSI_RESET);
+                System.out.println(ANSI_BOLD + ANSI_RED + "To much arguments" + ANSI_RESET);
                 break;
             case 8 :
-                System.out.println(ANSI_BOLD + ANSI_RED + "Cap moviment fet" + ANSI_RESET);
+                System.out.println(ANSI_BOLD + ANSI_RED + "No movement done" + ANSI_RESET);
                 break;
         }
     }
