@@ -141,7 +141,7 @@ public  class Player{
                playerPosi[1]=initialPlayerPosi[1];
                direction = startDirection;
                maze[initialPlayerPosi[0]][initialPlayerPosi[1]]=deadChar();
-               System.out.println("Xoc!");
+               System.out.println("Shock!");
                return 1;
                
             }
@@ -163,7 +163,7 @@ public  class Player{
                playerPosi[1]=initialPlayerPosi[1];
                direction = startDirection;
                maze[initialPlayerPosi[0]][initialPlayerPosi[1]]=deadChar();
-               System.out.println("Xoc!");
+               System.out.println("Shock!");
                return 1;
             }
             else if(nextChar == 'G'){

@@ -42,7 +42,7 @@ public class UI {
             System.out.println(ANSI_CYAN+"Actual record: "+ recordString[2] +" in "+recordString[1]+" intents"+ANSI_RESET);
         }
         else{
-            System.out.println(ANSI_CYAN+"Record not  found"+ANSI_RESET);
+            System.out.println(ANSI_CYAN+"Record not found"+ANSI_RESET);
         }
         System.out.println();
         System.out.println(ANSI_CYAN+"Actual attempt 1"+ANSI_RESET);

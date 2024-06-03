@@ -1,4 +1,5 @@
 Maze,Attempts,Name
-maze01.dat,4,Bondia
-maze05.dat,1,hola
-maze01.dat,2,alba
+maze01,4,Bondia
+maze05,1,hola
+maze01,2,alba
+maze01,1,jo
