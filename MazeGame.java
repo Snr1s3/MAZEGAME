@@ -1,10 +1,19 @@
 import java.io.IOException;
 import java.io.File;
+import java.sql.SQLException;
+
 public class MazeGame {
     public static void main(String[] args) throws IOException{
         int moveExitCode=0; // Variable to store the exit code of the move
         boolean hasRecord= false;
         boolean emptyMaze= false;
+        try{
+            DataBase.connecta();
+            DataBase.createTableMazes();
+            DataBase.createTablePlayers();
+        }catch(SQLException e){
+            System.out.println(e);
+        }
         if(!Maze.argsNumCheck(args)){
             return;
         }
@@ -49,10 +58,14 @@ public class MazeGame {
                     input=input.toUpperCase();
                     input =Input.playerInput(input); // Reading user input
                     if(Input.containsQorH(input) == 1){
+                        UI.printQ();
                         break; 
-                    }           
+                    }  
+                    if(Input.containsQorH(input) == 2){
+                        UI.showHelp();
+                    }         
                     // Otherwise, loop through each character in the user's input
-                    if(Input.containsQorH(input) == 0){
+                    else if(Input.containsQorH(input) == 0){
                         for(int i =0; i<input.length();i++){
                             // Turn the player left based on the current character
                             player.turnLeft(input.charAt(i),laberint.getMazeMap());
@@ -87,6 +100,11 @@ public class MazeGame {
                 record.newRecord(hasRecord, player.getIntents(), laberint.getMazeName());
                 break;
             }
-        }    
+        }  
+        try{
+            DataBase.desconnecta();
+        }catch(SQLException e){
+            System.out.println(e);
+        }  
     }
 }

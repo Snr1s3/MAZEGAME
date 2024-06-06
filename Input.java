@@ -5,38 +5,27 @@ public class Input {
         String movementPlayerFiltered ="";
         int letterPosition =0;
         while (letterPosition < input.length()) {
-            char currentChar = input.charAt(letterPosition);
-            if (Character.isDigit(currentChar)) {
-                int repeat = Character.getNumericValue(currentChar);
+            if (Character.isDigit(input.charAt(letterPosition))) {
+                int repeat = Character.getNumericValue(input.charAt(letterPosition));
                 letterPosition++; // Move to the next character
                 if (letterPosition < input.length()) {
-                    char nextChar = input.charAt(letterPosition);
                     for (int j = 0; j < repeat; j++) {
-                        movementPlayer +=nextChar;
+                        movementPlayer +=input.charAt(letterPosition);
                     }
                 }
             } else {
-                movementPlayer+=currentChar;
+                movementPlayer+=input.charAt(letterPosition);
             }
             letterPosition++;
         }
         for(int i= 0; i< movementPlayer.length(); i++){
-            char currentChar = movementPlayer.charAt(i);
-            switch (currentChar) {
+            switch (movementPlayer.charAt(i)) {
                 case 'H':
-                    movementPlayerFiltered += currentChar;
-                    break;
                 case 'L':
-                    movementPlayerFiltered += currentChar;
-                    break;
                 case 'R':
-                    movementPlayerFiltered += currentChar;
-                    break;
                 case 'F':
-                    movementPlayerFiltered += currentChar;
-                    break;
                 case 'Q':
-                    movementPlayerFiltered += currentChar;
+                    movementPlayerFiltered += movementPlayer.charAt(i);
                     break;
                 default:
             }
@@ -44,39 +33,18 @@ public class Input {
         return movementPlayerFiltered;
     }
 
-    // Method to check if the input contains 'Q'
+    // Method to check if the input contains 'Q' or 'H'
     public static int containsQorH(String input){
-        int contains = 0;
-        for(int i= 0; i< input.length(); i++){            
-            char currentChar = input.charAt(i);
-            switch (currentChar) {
+        for(int i= 0; i< input.length(); i++){    
+            switch (input.charAt(i)) {
                 case 'Q':
-                    contains = 1;
-                    UI.printQ();
-                    break;
+                    return 1;
                 case 'H':
-                    contains = 2;
-                    UI.showHelp();
-                    break;
+                    return 2;
                 default:
             }            
         }
-        return contains;
-    }
-
-    // Method to check if the input contains 'H'
-    public static boolean containsH(String input){
-        boolean contains = false;
-        for(int i= 0; i< input.length(); i++){            
-            char currentChar = input.charAt(i);
-            switch (currentChar) {
-                case 'H':
-                    contains = true;
-                    break;
-                default:
-            }            
-        }
-        return contains;
+        return 0;
     }
     public static boolean digitsCheck(String input){
         boolean contains = false;
@@ -92,18 +60,13 @@ public class Input {
     }
 
     public static boolean inavlidChar(String input){
-        for(int i= 0; i< input.length(); i++){            
-            char currentChar = input.charAt(i);
-            if(!Character.isDigit(currentChar)){
-                switch (currentChar) {
+        for(int i= 0; i< input.length(); i++){
+            if(!Character.isDigit(input.charAt(i))){
+                switch (input.charAt(i)) {
                     case 'H':
-                        break;
                     case 'Q':
-                        break;
                     case 'R':
-                        break;
                     case 'L':
-                        break;
                     case 'F':
                         break;              
                     default:

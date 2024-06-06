@@ -66,7 +66,7 @@ public class UI {
         // Print the current number of attempts
         System.out.println("Actual attempts: "+  attempts);
             // Print the current state of the maze
-        Maze.printMaze(map);
+        UI.printMaze(map);
         System.out.println();
     }
 
@@ -95,6 +95,71 @@ public class UI {
         else{
             printMazeInfo(laberint.getMazeName(), 1,hasRecord, record.getRecord()); // Showing maze info
         } 
+    }
+
+    // Method to print the maze
+    public static void printMaze(char[][] maze){ //Print the maze translated to a graphic representation
+        for(int i = 0; i< maze.length; i++){            
+            for(int p =0;p<maze[i].length;p++){
+                // Print the maze with different characters for different directions
+                // and different types of cells
+                if( maze[i][p]=='R' || maze[i][p]=='E'){
+                    System.out.print('→');
+                    System.out.print(' ');
+                }
+                else if( maze[i][p]=='L'){
+                    System.out.print('←');
+                    System.out.print(' ');
+                }
+                else if( maze[i][p]=='U'){
+                    System.out.print('↑');
+                    System.out.print(' ');
+                }
+                else if( maze[i][p]=='D'){
+                    System.out.print('↓');
+                    System.out.print(' ');
+                }
+                else if( maze[i][p]=='G'){
+                    System.out.print(' ');
+                    System.out.print(' ');
+                }
+                else if(maze[i][p]=='W'){
+                    System.out.print(ANSI_RED+'■'+ANSI_RESET);
+                    System.out.print(' ');
+                }
+                else if(maze[i][p]=='C'){
+                    System.out.print(' ');
+                    System.out.print(' ');
+                }
+                else if(i==0 && p ==0){
+                    System.out.print('┌');
+                    System.out.print('─');
+                }
+                else if(i==0 && p==maze[i].length-1){
+                    System.out.print('┐');
+                }
+                else if(i==maze.length-1 && p ==0){
+                    System.out.print('└');
+                    System.out.print('─');
+                }
+                else if(i==maze.length-1  && p==maze[i].length-1){
+                    System.out.print('┘');
+                }
+                else if(i==0 || i==maze.length-1){
+                    System.out.print('─');
+                    System.out.print('─');
+                }
+                else if(p==0 || p==maze[i].length-1){
+                    System.out.print('│');
+                    System.out.print(' ');
+                }
+                else{
+                    System.out.print('·');
+                    System.out.print(' ');
+                }
+            }
+            System.out.println();
+        }
     }
 
     public static void printErrors(int numError){
