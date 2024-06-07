@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 
 public class DataBase {
 
-    private static final String name_DB = "maze.bd";
+    private static final String name_DB = "maze.db";
     private static final String conn_string = "jdbc:sqlite:" + name_DB;
     private static Connection conn = null;
     public static void connecta() throws SQLException {
@@ -88,7 +88,6 @@ public class DataBase {
             getMazeRecord("maze1");
             insertRecord("maze1", 234, "player1");
             getMazeRecord("maze1");
-            dropDB();
             desconnecta();
         }catch(SQLException e){
             System.out.println(e.getMessage());

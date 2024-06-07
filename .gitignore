@@ -1,4 +1,4 @@
 # ignores all .class files
 *.class
 *.vscode
-*.bd
+*.db
