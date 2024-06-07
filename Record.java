@@ -2,27 +2,24 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.FileWriter;
+import java.sql.SQLException;
 
 public class Record {
     private String[] recordInfo = new String[3];
 
     public boolean checkRecord(String mazeName) throws IOException{
-        FileReader fR = new FileReader("mazes/mazeDB.csv");
-        BufferedReader reader = new BufferedReader(fR);
-        String line = reader.readLine();
-        while ((line = reader.readLine()) != null) {
-            String[] parameters=line.split(",");
-            if(parameters[0].equals(mazeName)){
+        try{
+            String[] parameters = DataBase.getMazeRecord(mazeName);
+            if(parameters != null && !isArrayEmpty(parameters)) {
                 recordInfo[0] = parameters[0];
                 recordInfo[1] = parameters[1];
                 recordInfo[2] = parameters[2];
-                fR.close();
-                reader.close();
                 return true;
             }
+            return false;
+        }catch(SQLException e){
+            System.out.println(e);
         }
-        fR.close();
-        reader.close();
         return false;
     }
 
@@ -30,8 +27,6 @@ public class Record {
         UI.printAttemptsRecord(attempts);
         System.out.println();
         if(!record || attempts< Integer.parseInt(recordInfo[1])){
-            FileWriter writer = new FileWriter("mazes/mazeDB.csv", true);
-            writer.write(System.lineSeparator()); // Add a new line
             UI.printNewRecord(true);
             String name=LineReader.newLine();
             while(name.isBlank()){
@@ -40,9 +35,11 @@ public class Record {
                 name=LineReader.newLine();
             }
             name=name.trim();
-            String newLine=mazeName+","+attempts+","+name;
-            writer.write(newLine); // Write the new line
-            writer.close();
+            try{
+                DataBase.insertRecord(mazeName, attempts, name);
+            }catch(SQLException e){
+                System.out.println(e);
+            }
         }
         else{
             UI.printNewRecord(false);
@@ -51,5 +48,14 @@ public class Record {
 
     public String[] getRecord(){
         return recordInfo;
+    }
+
+    public boolean isArrayEmpty(String[] array) {
+        for (String element : array) {
+            if (element != null) {
+                return false;
+            }
+        }
+        return true;
     }
 }

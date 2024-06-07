@@ -10,7 +10,6 @@ public class MazeGame {
         try{
             DataBase.connecta();
             DataBase.createTableMazes();
-            DataBase.createTablePlayers();
         }catch(SQLException e){
             System.out.println(e);
         }
